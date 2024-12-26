@@ -103,8 +103,10 @@ class Game {
      * this.life = 20;
      */
     set life(newLife) {
-        this.score = newLife;
-        this.lifeBoard.textContent = `${newLife}`;
+        if (newLife >= 0) {
+            this.score = newLife;
+            this.lifeBoard.textContent = `${newLife}`;
+        }
     }
     /**
      * Returns the current high score.
@@ -133,26 +135,33 @@ class Game {
      * Provides feeback to the user.
      */
     listenForCheck() {
-        const value = this.guessInput.value;
-        if (!value) {
-            this.feedback.textContent = "Please choose a number!!";
-            this.life -= 1;
+        if (this.life === 0) {
+            this.feedback.textContent = "Game Over!!";
+            this.checkBtn.disabled = true;
+            this.guessInput.disabled = true;
         }
         else {
-            const diff = this.#secret - Number(value);
-            if (diff === 0) {
-                document.body.classList.add("win");
-                this.feedback.textContent = "Correct!! you won.";
-                this.revealBoard.textContent = `${this.#secret}`;
-                this.bestScore = this.life;
-            }
-            else if (diff > 0) {
-                this.feedback.textContent = "Too low";
+            const value = this.guessInput.value;
+            if (!value) {
+                this.feedback.textContent = "Please choose a number!!";
                 this.life -= 1;
             }
             else {
-                this.feedback.textContent = "Too high";
-                this.life -= 1;
+                const diff = this.#secret - Number(value);
+                if (diff === 0) {
+                    document.body.classList.add("win");
+                    this.feedback.textContent = "Correct!! you won.";
+                    this.revealBoard.textContent = `${this.#secret}`;
+                    this.bestScore = this.life;
+                }
+                else if (diff > 0) {
+                    this.feedback.textContent = "Too low";
+                    this.life -= 1;
+                }
+                else {
+                    this.feedback.textContent = "Too high";
+                    this.life -= 1;
+                }
             }
         }
     }
@@ -163,6 +172,8 @@ class Game {
     listenForAgain() {
         this.life = MAX_LIFE;
         this.#secret = this.secret;
+        this.checkBtn.disabled = false;
+        this.guessInput.disabled = false;
         this.revealBoard.textContent = "?";
         this.feedback.textContent = "Start guessing...";
         this.guessInput.value = "";
