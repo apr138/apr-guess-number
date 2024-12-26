@@ -1,0 +1,139 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+:root {
+  /* colors */
+  --color-grey-800: #262626;
+  --color-grey-100: #f5f5f5;
+  --color-grey-200: #e5e5e5;
+  --color-lime-600: #65a30d;
+
+  /* border radius */
+  --border-radius-sm: 0.7rem;
+}
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Press Start 2P", serif;
+  line-height: 1.6;
+  font-size: 1.6rem;
+  background-color: var(--color-grey-800);
+  color: var(--color-grey-100);
+}
+
+button,
+input {
+  font-family: inherit;
+  background: none;
+  border: none;
+}
+
+button {
+  cursor: pointer;
+  background-color: var(--color-grey-100);
+  color: var(--color-grey-800);
+  padding: 2rem 3rem;
+  font-size: 2rem;
+  border-radius: var(--border-radius-sm);
+  transition: all 0.2s;
+}
+
+.btn {
+  max-width: 17.5rem;
+}
+
+button:hover {
+  background-color: var(--color-grey-200);
+}
+
+.header {
+  text-align: center;
+  padding: 2rem;
+  border-bottom: 0.7rem solid var(--color-grey-100);
+  padding-bottom: 8rem;
+  position: relative;
+}
+
+h1 {
+  font-size: 4rem;
+  margin-top: 3.5rem;
+  margin-bottom: 2rem;
+}
+
+.header-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header-actions p {
+  font-size: 1.4rem;
+}
+
+.number {
+  font-size: 5rem;
+  background-color: var(--color-grey-100);
+  color: var(--color-grey-800);
+  display: inline-block;
+  padding: 2rem 5rem;
+
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+main {
+  margin-top: 15rem;
+  display: flex;
+  gap: 35rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+  align-items: center;
+}
+
+.right {
+  min-width: 50rem;
+}
+
+.guess {
+  font-size: 4rem;
+  padding: 4rem;
+  border: 3px solid var(--color-grey-100);
+  color: var(--color-grey-100);
+  max-width: 25rem;
+  text-align: center;
+}
+
+.guess:focus {
+  outline: none;
+}
+
+.right p {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.message {
+  margin-bottom: 8rem !important;
+}
+
+.win {
+  background-color: var(--color-lime-600);
+}
